@@ -1,0 +1,42 @@
+
+# Compilar la configuracion de docker y ejecutar las sentencias
+docker build . --tag example:1 --no-cache
+
+# Compilar la configuracion de docker y ejecutar las sentencias (utiliza las imagenes descargadas)
+docker build . --tag example:1
+
+>> Successfully built 3929e9c8f1b9
+>> Successfully tagged example:1
+
+# Correr el contenedor
+docker run -it <HASH> bash
+
+# Correr el contenedor y establecer un nombre para la instancia
+docker run --name example_1 -it example:1bash
+
+>> # Instalamos como ejemplo VIM (EL CONTENEDOR ES INMUTABLE, SOLO SE INSTALA DURANTE LA EJECUCION)
+>> apt-get install vim
+
+>> # Salimos del contenedor
+>> exit
+
+# Ver estados de los contenedores (Aqui encontramos el HASH)
+docker ps
+
+# Ver mayor informacion de los container (tiempo de ejecucion)
+docker ps -a
+
+# Eliminar el contenedor
+docker rm <HASH>
+
+# Forzar la elminacion de un contenedor corriendo
+docker rm -f <HASH>
+
+# Retorna todos los <HASH> corriendo en ese momento
+docker rm -f $(docker ps -aq)
+
+# Ver imagenes de los contenedores
+docker images
+
+# Eliminar imagenes
+docker rmi <HASH>
